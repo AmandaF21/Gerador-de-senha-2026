@@ -7,16 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="conteudo">
-<div class="parametro">
-    <div class="parametro-coluna-senha">
-    <div class="parametro-senha">
-        <h4 class="parametro-senha_titulo">ForÇa da senha</h4>
-    </div>
+    <section class="container">
+<div class="header">
+    <h1>Gerador de senha</h1>
+     </div>
 
-    </div>
-</div>
-    </section>
+    <div class="display-box">
+        <span id="password">senha</span>
+        <button class="copy-btn" id="copybtn" title="Copiar">Copiar</button>
+        </div>
+
+    <div class="custom-section">
+        <h2>personalize sua senha</h2>
     
+        <div class="control-group">
+            <span class="control-label">Número de caracteres</span>
+            <div class="counter">
+                <button id="decrement">-</button>
+                <span id="lengthVal">+</span>
+                <button id="increment">+</button>
+            </div>
+        </div>
+        <button class="generate-btn" id="generate-Btn">Gerar nova senha</button>
+    </section>
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
