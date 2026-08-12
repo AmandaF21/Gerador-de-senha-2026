@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,28 +15,28 @@
 
         <!-- CABEÇALHO -->
         <header class="header">
-
             <h1>Gerador de senhas</h1>
 
-            <p>Gere instantaneamente uma senha aleatória e segura</p>
+            <p>
+                Gere instantaneamente uma senha aleatória e segura
+            </p>
 
             <div class="lock">🔒</div>
-
         </header>
 
 
-        <!-- SENHA GERADA -->
+        <!-- SENHA -->
         <section class="display-box">
 
             <div class="password-area">
-
                 <span class="password-label">Senha:</span>
 
-                <span id="password">AgHmANJhyFda</span>
-
+                <span class="password">
+                    AgHmANJhyFda
+                </span>
             </div>
 
-            <button class="copy-btn" id="copyBtn">
+            <button class="copy-btn">
                 Copiar
             </button>
 
@@ -51,7 +50,7 @@
 
             <div class="custom-content">
 
-                <!-- QUANTIDADE DE CARACTERES -->
+                <!-- NÚMERO DE CARACTERES -->
                 <div class="control-group">
 
                     <span class="control-label">
@@ -60,11 +59,11 @@
 
                     <div class="counter">
 
-                        <button id="decrement">−</button>
+                        <button>-</button>
 
-                        <span id="lengthVal">12</span>
+                        <span>12</span>
 
-                        <button id="increment">+</button>
+                        <button>+</button>
 
                     </div>
 
@@ -79,22 +78,22 @@
                     </span>
 
                     <label>
-                        <input type="checkbox" id="uppercase" checked>
+                        <input type="checkbox" checked>
                         Letras maiúsculas
                     </label>
 
                     <label>
-                        <input type="checkbox" id="lowercase" checked>
+                        <input type="checkbox" checked>
                         Letras minúsculas
                     </label>
 
                     <label>
-                        <input type="checkbox" id="numbers">
+                        <input type="checkbox">
                         Números
                     </label>
 
                     <label>
-                        <input type="checkbox" id="symbols">
+                        <input type="checkbox">
                         Símbolos
                     </label>
 
@@ -103,15 +102,15 @@
             </div>
 
 
-            <!-- BOTÃO -->
-            <button class="generate-btn" id="generate-Btn">
+            <!-- BOTÃO GERAR -->
+            <button class="generate-btn">
                 Gerar nova senha
             </button>
 
         </section>
 
 
-        <!-- PAINEL LATERAL -->
+        <!-- FORÇA DA SENHA -->
         <aside class="strength-panel">
 
             <h2>Força da senha</h2>
@@ -160,7 +159,7 @@
 
             <div class="strength-item">
 
-                <div id="passwordStrength" class="strength-bar strong"></div>
+                <div class="strength-bar strong"></div>
 
                 <div class="strength-labels">
                     <span>Fraca</span>
@@ -173,9 +172,7 @@
 
     </main>
 
-
-    <script src="script.js"></script>
-
+    
 </body>
 
 </html>
