@@ -1,36 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de senha</title>
+
+    <title>Gerador de Senhas</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <section class="container">
-<div class="header">
-    <h1>Gerador de senha</h1>
-     </div>
 
-    <div class="display-box">
-        <span id="password">senha</span>
-        <button class="copy-btn" id="copybtn" title="Copiar">Copiar</button>
-        </div>
+    <main class="container">
 
-    <div class="custom-section">
-        <h2>personalize sua senha</h2>
-    
-        <div class="control-group">
-            <span class="control-label">Número de caracteres</span>
-            <div class="counter">
-                <button id="decrement">-</button>
-                <span id="lengthVal">+</span>
-                <button id="increment">+</button>
+        <!-- CABEÇALHO -->
+        <header class="header">
+
+            <h1>Gerador de senhas</h1>
+
+            <p>Gere instantaneamente uma senha aleatória e segura</p>
+
+            <div class="lock">🔒</div>
+
+        </header>
+
+
+        <!-- SENHA GERADA -->
+        <section class="display-box">
+
+            <div class="password-area">
+
+                <span class="password-label">Senha:</span>
+
+                <span id="password">AgHmANJhyFda</span>
+
             </div>
-        </div>
-        <button class="generate-btn" id="generate-Btn">Gerar nova senha</button>
-    </section>
-    </div>
-<script src="script.js"></script>
+
+            <button class="copy-btn" id="copyBtn">
+                Copiar
+            </button>
+
+        </section>
+
+
+        <!-- PERSONALIZAÇÃO -->
+        <section class="custom-section">
+
+            <h2>Personalize sua senha</h2>
+
+            <div class="custom-content">
+
+                <!-- QUANTIDADE DE CARACTERES -->
+                <div class="control-group">
+
+                    <span class="control-label">
+                        Número de caracteres
+                    </span>
+
+                    <div class="counter">
+
+                        <button id="decrement">−</button>
+
+                        <span id="lengthVal">12</span>
+
+                        <button id="increment">+</button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARACTERÍSTICAS -->
+                <div class="characteristics">
+
+                    <span class="control-label">
+                        Características da senha
+                    </span>
+
+                    <label>
+                        <input type="checkbox" id="uppercase" checked>
+                        Letras maiúsculas
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="lowercase" checked>
+                        Letras minúsculas
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="numbers">
+                        Números
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="symbols">
+                        Símbolos
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÃO -->
+            <button class="generate-btn" id="generate-Btn">
+                Gerar nova senha
+            </button>
+
+        </section>
+
+
+        <!-- PAINEL LATERAL -->
+        <aside class="strength-panel">
+
+            <h2>Força da senha</h2>
+
+
+            <div class="strength-item">
+
+                <div class="strength-bar strong"></div>
+
+                <div class="strength-labels">
+                    <span>Fraca</span>
+                    <span>Forte</span>
+                </div>
+
+            </div>
+
+
+            <div class="strength-item">
+
+                <div class="strength-bar medium"></div>
+
+                <div class="strength-labels">
+                    <span>Fraca</span>
+                    <span>Forte</span>
+                </div>
+
+            </div>
+
+
+            <div class="strength-item">
+
+                <div class="strength-bar weak"></div>
+
+                <div class="strength-labels">
+                    <span>Fraca</span>
+                    <span>Forte</span>
+                </div>
+
+            </div>
+
+
+            <h2 class="your-password">
+                Sua senha
+            </h2>
+
+
+            <div class="strength-item">
+
+                <div id="passwordStrength" class="strength-bar strong"></div>
+
+                <div class="strength-labels">
+                    <span>Fraca</span>
+                    <span>Forte</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
