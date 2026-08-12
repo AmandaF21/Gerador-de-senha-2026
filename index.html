@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Gerador de Senhas</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,14 +11,9 @@
 
     <main class="container">
 
-        <!-- CABEÇALHO -->
         <header class="header">
             <h1>Gerador de senhas</h1>
-
-            <p>
-                Gere instantaneamente uma senha aleatória e segura
-            </p>
-
+            <p>Gere instantaneamente uma senha aleatória e segura</p>
             <div class="lock">🔒</div>
         </header>
 
@@ -30,13 +23,10 @@
 
             <div class="password-area">
                 <span class="password-label">Senha:</span>
-
-                <span class="password">
-                    AgHmANJhyFda
-                </span>
+                <span id="password">AgHmANJhyFda</span>
             </div>
 
-            <button class="copy-btn">
+            <button class="copy-btn" id="copyBtn">
                 Copiar
             </button>
 
@@ -50,7 +40,7 @@
 
             <div class="custom-content">
 
-                <!-- NÚMERO DE CARACTERES -->
+                <!-- TAMANHO -->
                 <div class="control-group">
 
                     <span class="control-label">
@@ -59,11 +49,11 @@
 
                     <div class="counter">
 
-                        <button>-</button>
+                        <button id="decrement">−</button>
 
-                        <span>12</span>
+                        <span id="lengthVal">12</span>
 
-                        <button>+</button>
+                        <button id="increment">+</button>
 
                     </div>
 
@@ -78,22 +68,22 @@
                     </span>
 
                     <label>
-                        <input type="checkbox" checked>
+                        <input type="checkbox" id="uppercase" checked>
                         Letras maiúsculas
                     </label>
 
                     <label>
-                        <input type="checkbox" checked>
+                        <input type="checkbox" id="lowercase" checked>
                         Letras minúsculas
                     </label>
 
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="numbers">
                         Números
                     </label>
 
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="symbols">
                         Símbolos
                     </label>
 
@@ -102,8 +92,7 @@
             </div>
 
 
-            <!-- BOTÃO GERAR -->
-            <button class="generate-btn">
+            <button class="generate-btn" id="generateBtn">
                 Gerar nova senha
             </button>
 
@@ -115,40 +104,31 @@
 
             <h2>Força da senha</h2>
 
-
             <div class="strength-item">
-
                 <div class="strength-bar strong"></div>
 
                 <div class="strength-labels">
                     <span>Fraca</span>
                     <span>Forte</span>
                 </div>
-
             </div>
 
-
             <div class="strength-item">
-
                 <div class="strength-bar medium"></div>
 
                 <div class="strength-labels">
                     <span>Fraca</span>
                     <span>Forte</span>
                 </div>
-
             </div>
 
-
             <div class="strength-item">
-
                 <div class="strength-bar weak"></div>
 
                 <div class="strength-labels">
                     <span>Fraca</span>
                     <span>Forte</span>
                 </div>
-
             </div>
 
 
@@ -156,10 +136,9 @@
                 Sua senha
             </h2>
 
-
             <div class="strength-item">
 
-                <div class="strength-bar strong"></div>
+                <div id="passwordStrength" class="strength-bar medium"></div>
 
                 <div class="strength-labels">
                     <span>Fraca</span>
@@ -172,7 +151,207 @@
 
     </main>
 
-    
-</body>
 
+    <!-- JAVASCRIPT DENTRO DO HTML -->
+    <script>
+
+        const password = document.getElementById("password");
+
+        const copyBtn = document.getElementById("copyBtn");
+
+        const decrement = document.getElementById("decrement");
+
+        const increment = document.getElementById("increment");
+
+        const lengthVal = document.getElementById("lengthVal");
+
+        const generateBtn = document.getElementById("generateBtn");
+
+        const uppercase = document.getElementById("uppercase");
+
+        const lowercase = document.getElementById("lowercase");
+
+        const numbers = document.getElementById("numbers");
+
+        const symbols = document.getElementById("symbols");
+
+        const passwordStrength =
+            document.getElementById("passwordStrength");
+
+
+        let length = 12;
+
+
+        // DIMINUIR TAMANHO
+
+        decrement.addEventListener("click", function () {
+
+            if (length > 4) {
+
+                length--;
+
+                lengthVal.textContent = length;
+
+            }
+
+        });
+
+
+        // AUMENTAR TAMANHO
+
+        increment.addEventListener("click", function () {
+
+            if (length < 30) {
+
+                length++;
+
+                lengthVal.textContent = length;
+
+            }
+
+        });
+
+
+        // GERAR SENHA
+
+        function generatePassword() {
+
+            let characters = "";
+
+            let newPassword = "";
+
+
+            if (uppercase.checked) {
+                characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+
+            if (lowercase.checked) {
+                characters += "abcdefghijklmnopqrstuvwxyz";
+            }
+
+            if (numbers.checked) {
+                characters += "0123456789";
+            }
+
+            if (symbols.checked) {
+                characters += "!@#$%&*?";
+            }
+
+
+            if (characters === "") {
+
+                alert("Selecione pelo menos uma característica.");
+
+                return;
+            }
+
+
+            for (let i = 0; i < length; i++) {
+
+                const random =
+                    Math.floor(Math.random() * characters.length);
+
+                newPassword += characters[random];
+
+            }
+
+
+            password.textContent = newPassword;
+
+            updateStrength();
+
+        }
+
+
+        // BOTÃO GERAR
+
+        generateBtn.addEventListener("click", generatePassword);
+
+
+        // COPIAR SENHA
+
+        copyBtn.addEventListener("click", function () {
+
+            navigator.clipboard.writeText(password.textContent);
+
+            copyBtn.textContent = "Copiado!";
+
+            setTimeout(function () {
+
+                copyBtn.textContent = "Copiar";
+
+            }, 1500);
+
+        });
+
+
+        // FORÇA DA SENHA
+
+        function updateStrength() {
+
+            let points = 0;
+
+
+            if (uppercase.checked) {
+                points++;
+            }
+
+            if (lowercase.checked) {
+                points++;
+            }
+
+            if (numbers.checked) {
+                points++;
+            }
+
+            if (symbols.checked) {
+                points++;
+            }
+
+            if (length >= 12) {
+                points++;
+            }
+
+            if (length >= 18) {
+                points++;
+            }
+
+
+            passwordStrength.classList.remove(
+                "weak",
+                "medium",
+                "strong"
+            );
+
+
+            if (points <= 2) {
+
+                passwordStrength.classList.add("weak");
+
+            } else if (points <= 4) {
+
+                passwordStrength.classList.add("medium");
+
+            } else {
+
+                passwordStrength.classList.add("strong");
+
+            }
+
+        }
+
+
+        // ATUALIZAR FORÇA QUANDO MARCAR/DESMARCAR
+
+        uppercase.addEventListener("change", updateStrength);
+
+        lowercase.addEventListener("change", updateStrength);
+
+        numbers.addEventListener("change", updateStrength);
+
+        symbols.addEventListener("change", updateStrength);
+
+    </script>
+
+</body>
 </html>
